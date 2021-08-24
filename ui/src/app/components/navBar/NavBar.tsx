@@ -9,19 +9,21 @@ import {
   Flex,
   Text,
   Icon,
-  Image,
   useDisclosure,
+  Link,
 } from "@chakra-ui/react";
+import { Link as RouterLink, NavLink } from "react-router-dom";
 import { AiOutlineMenu } from "react-icons/ai";
 
 import { useMediaQueries } from "app/hooks";
+import history from "app/utils/history";
 
 interface INavigationMenuProps {
-  logoSrc: string;
+  logoTitle: string;
   children: React.ReactNode;
 }
 
-export const NavBar = ({ logoSrc, children }: INavigationMenuProps) => {
+export const NavBar = ({ logoTitle, children }: INavigationMenuProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { isMd, isXl } = useMediaQueries();
 
@@ -30,9 +32,16 @@ export const NavBar = ({ logoSrc, children }: INavigationMenuProps) => {
       <Center minH="64px" pr="64px" pl="64px" borderBottom="1px solid">
         <Flex w="1500px" flexDir="row" align="center" justify="space-around">
           <Center w="100px" h="100px">
-            <Text fontSize="2xl" whiteSpace="nowrap">
-              christos kaltsas
-            </Text>
+            <Link
+              onClick={() => history.push("/")}
+              as={RouterLink}
+              to="/"
+              _hover={{ textDecor: "none", boxShadow: "none !important" }}
+            >
+              <Text fontSize="2xl" whiteSpace="nowrap">
+                {logoTitle}
+              </Text>
+            </Link>
           </Center>
           <Flex flexDir="row" align="center">
             {children}
@@ -45,7 +54,7 @@ export const NavBar = ({ logoSrc, children }: INavigationMenuProps) => {
       <Center minH="64px" pr="64px" pl="64px" borderBottom="1px solid">
         <Flex w="1500px" flexDir="row" align="center" justify="space-around">
           <Text fontSize="2xl" whiteSpace="nowrap">
-            christos kaltsas
+            {logoTitle}
           </Text>
           <Flex flexDir="row" align="center">
             <Button variant="outline" onClick={onOpen}>
@@ -57,8 +66,12 @@ export const NavBar = ({ logoSrc, children }: INavigationMenuProps) => {
                 <DrawerCloseButton />
                 <DrawerBody>
                   <Flex flexDir="column" justify="center" align="center" mb={5}>
-                    <Text fontSize="2xl" whiteSpace="nowrap">
-                      christos kaltsas
+                    <Text
+                      fontSize="2xl"
+                      whiteSpace="nowrap"
+                      borderBottom="1px solid"
+                    >
+                      {logoTitle}
                     </Text>
                     {children}
                   </Flex>

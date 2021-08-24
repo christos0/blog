@@ -43,6 +43,13 @@ export const Home = () => {
           <Icon as={AiOutlineLink} mx="2px" />
         </Link>
         <br />
+        3.{" "}
+        <Link isExternal to="https://pages.cs.wisc.edu/~remzi/OSTEP/">
+          C Programming Language <Icon as={AiOutlineLink} mx="2px" />
+        </Link>
+        <br />
+        <br />
+        Some of my favorite philosophy books are:
       </p>
     </Container>
   );

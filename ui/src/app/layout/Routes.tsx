@@ -5,7 +5,7 @@ import { Home } from "pages";
 export const Routes = () => {
   return (
     <Switch>
-      <Route path="/" exact component={Home} />
+      <Route exact path="/" render={Home} />
     </Switch>
   );
 };
