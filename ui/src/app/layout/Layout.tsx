@@ -1,27 +1,21 @@
-import { Box, Flex, Icon, Link, Switch, useColorMode } from "@chakra-ui/react";
-import { Link as RouterLink } from "react-router-dom";
-import { FaMoon, FaSun } from "react-icons/fa";
+import { Center, Container } from "@chakra-ui/react";
 
 import { NavBar } from "app/components";
+import { useWidths } from "app/hooks";
 import { Routes } from "./Routes";
 
 export const Layout = () => {
-  const { colorMode, toggleColorMode } = useColorMode();
+  const { maxWidth } = useWidths();
 
   return (
-    <>
-      <NavBar logoTitle="christos kaltsas">
-        <Link as={RouterLink} to="/contact" mr={5}>
-          Contact
-        </Link>
-        <Flex justify="center" align="center">
-          <Icon as={colorMode === "light" ? FaMoon : FaSun} mr={2} />
-          <Switch onChange={toggleColorMode} />
-        </Flex>
+    <Center flexDir="column">
+      <NavBar websiteTitle="rainbow_chad">
+        <NavBar.Item to="/" name="Home" />
+        <NavBar.ColorSwitch />
       </NavBar>
-      <Box>
+      <Container maxW={maxWidth} fontFamily="monospace">
         <Routes />
-      </Box>
-    </>
+      </Container>
+    </Center>
   );
 };

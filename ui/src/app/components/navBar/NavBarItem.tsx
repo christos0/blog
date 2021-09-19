@@ -1,15 +1,17 @@
-import { Link } from "@chakra-ui/react";
+import { Link, LinkProps } from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
 
-interface INavItemProps {
-  path: string;
-  title: string;
+interface Props extends LinkProps {
+  to: string;
+  name: string;
 }
 
-export const NavBarItem = ({ path, title }: INavItemProps) => {
+export const NavBarItem = (navBarItemProps: Props) => {
+  const { to, name, ...props } = navBarItemProps;
+
   return (
-    <Link color="" mr={12} as={RouterLink} to={path}>
-      {title}
+    <Link as={RouterLink} to={to} {...props}>
+      {name}
     </Link>
   );
 };
