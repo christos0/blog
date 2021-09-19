@@ -67,7 +67,7 @@ const Home = () => {
           <HStack>
             <ListIcon as={AiFillGithub} />
             <ExternalLink
-              href="https://github.com/christos0"
+              href="https://github.com/rainbowchad"
               title="Github Account"
             />
           </HStack>
