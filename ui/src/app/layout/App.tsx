@@ -6,7 +6,7 @@ import { Layout } from "./Layout";
 
 export const App = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/blog">
       <ChakraProvider>
         <Suspense fallback={<Spinner />}>
           <Layout />
